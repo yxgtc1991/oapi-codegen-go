@@ -1,7 +1,7 @@
 package main
 
 import (
-	codegen_test "demo/oapi-codegen-go"
+	codegenTest "demo/oapi-codegen-go"
 	"demo/oapi-codegen-go/app"
 	"github.com/deepmap/oapi-codegen/pkg/middleware"
 	"github.com/labstack/echo/v4"
@@ -9,14 +9,16 @@ import (
 	"net/http"
 )
 
+const test = "Get order info failed: %v."
+
 func main() {
 	e := echo.New()
 	e.Debug = true
 	e.Logger.SetLevel(log.DEBUG)
 	server := app.EchoServer{}
-	codegen_test.RegisterHandlersWithBaseURL(e, &server, "/james")
+	codegenTest.RegisterHandlersWithBaseURL(e, &server, "/james")
 	// swagger 对象
-	swagger, err := codegen_test.GetSwaggerWithPrefix("/james")
+	swagger, err := codegenTest.GetSwaggerWithPrefix("/james")
 	if err != nil {
 		panic(err)
 	}

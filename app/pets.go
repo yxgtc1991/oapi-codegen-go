@@ -15,7 +15,7 @@ func (e *EchoServer) FindPets(ctx echo.Context, params FindPetsParams) error {
 
 func (e *EchoServer) AddPet(ctx echo.Context) error {
 	pet := AddPetJSONRequestBody{}
-	_ = ctx.Bind(pet)
+	_ = ctx.Bind(&pet)
 	resp := Pet{
 		Id:   1,
 		Name: pet.Name,
